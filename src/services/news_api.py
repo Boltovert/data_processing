@@ -1,6 +1,5 @@
-import aiohttp # type: ignore
+import aiohttp
 from datetime import datetime, timedelta
-from typing import List, Dict
 
 class NewsAPIWorker:
     def __init__(self, api_key: str, base_url: str):
@@ -8,7 +7,7 @@ class NewsAPIWorker:
         self.base_url = base_url
 
 
-    async def fetch_news(self, query: str, days: int = 1) -> List[Dict]:
+    async def fetch_news(self, query: str, days: int = 1) -> list[dict]:
         from_date = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
 
         async with aiohttp.ClientSession() as session:

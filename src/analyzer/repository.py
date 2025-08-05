@@ -4,7 +4,6 @@ from sqlalchemy import select, and_, func
 from src.core.postgres import Postgres
 from src.models import Article, PoliticalEntity, Mention
 import pandas as pd
-from typing import List, Dict
 
 
 class AnalyzerRepository:
@@ -25,7 +24,7 @@ class AnalyzerRepository:
             await session.commit()
             return count
 
-    async def get_mentions_stats(self, days: int = 7) -> List[Dict]:
+    async def get_mentions_stats(self, days: int = 7) -> list[dict]:
         async with self.postgres(f"{self.__class__.__name__}.get_mentions_stats") as session:
             result = await session.execute(
                 select(
